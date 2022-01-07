@@ -171,11 +171,13 @@ class AllBook extends StatelessWidget {
 
     return SizedBox(
       width: 150,
-      height: 600,
+      height: 140 * allBook.length.toDouble(),
       child: Padding(
           padding: const EdgeInsets.only(left: 30, top: 8, right: 30),
           child: GridView.count(
+            physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 2,
+            shrinkWrap: true,
             childAspectRatio: (itemWidth / itemHeight),
             crossAxisSpacing: 20,
             mainAxisSpacing: 30,
