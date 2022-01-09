@@ -33,9 +33,15 @@ class DetailPage extends StatelessWidget {
           children: [
             Stack(
               children: [
-                SizedBox(
-                  width: double.infinity,
-                  child: Image.asset('images/banner.png'),
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Image.asset('images/banner.png'),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 30, right: 30, top: 18),
@@ -64,13 +70,16 @@ class DetailPage extends StatelessWidget {
                   child: UnconstrainedBox(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 36),
-                      child: SizedBox(
-                        width: 150,
-                        height: 220,
-                        child: Hero(
-                          tag: book.imageAsset,
-                          child: Image.asset(
-                            book.imageAsset,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: SizedBox(
+                          width: 150,
+                          height: 220,
+                          child: Hero(
+                            tag: book.imageAsset,
+                            child: Image.asset(
+                              book.imageAsset,
+                            ),
                           ),
                         ),
                       ),
