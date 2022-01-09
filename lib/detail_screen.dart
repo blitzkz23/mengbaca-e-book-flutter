@@ -24,58 +24,56 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var posX = (MediaQuery.of(context).size.width / 2) - 150 / 2;
+
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Stack(
-              alignment: Alignment.center,
               children: [
-                ClipRect(
-                  child: Container(
-                    height: 200,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20)),
-                      image: DecorationImage(
-                        image: AssetImage('images/banner.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                SizedBox(
+                  width: double.infinity,
+                  child: Image.asset('images/banner.png'),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.only(left: 30, right: 30, top: 18),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: kCtaOrange),
+                            color: kCtaOrange,
+                            borderRadius: BorderRadius.circular(8)),
                         child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(Icons.arrow_back),
-                          color: kWhiteColor,
-                        ),
+                            color: kCtaOrange,
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: kWhiteColor,
+                            )),
                       ),
                       const BookmarkButton()
                     ],
                   ),
                 ),
-                Positioned(
-                  top: 20,
-                  child: Hero(
-                    tag: book.imageAsset,
-                    child: Image.asset(
-                      book.imageAsset,
-                      width: 160,
-                      height: 250,
+                Center(
+                  child: UnconstrainedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 36),
+                      child: SizedBox(
+                        width: 150,
+                        height: 220,
+                        child: Hero(
+                          tag: book.imageAsset,
+                          child: Image.asset(
+                            book.imageAsset,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -164,6 +162,10 @@ class _BookmarkButtonState extends State<BookmarkButton> {
         onPressed: () {
           setState(() {
             isBookmark = !isBookmark;
+            if (isBookmark) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("You've bookmarked this item.")));
+            }
           });
         },
       ),

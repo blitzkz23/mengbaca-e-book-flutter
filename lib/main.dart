@@ -43,7 +43,8 @@ class LoginScreen extends StatelessWidget {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(30.0),
+                    padding:
+                        const EdgeInsets.only(top: 10, left: 30, bottom: 20),
                     child: Image.asset(
                       'images/mengbaca_logo.png',
                       width: 116,
@@ -87,14 +88,14 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Name'),
+                    Text('Username'),
                     const SizedBox(
                       height: 8,
                     ),
                     TextFormField(
                       validator: (String? value) {
                         if (value != null && value.isEmpty) {
-                          return 'Please enter your name';
+                          return 'Please enter your username';
                         }
                         return null;
                       },
@@ -104,7 +105,7 @@ class LoginScreen extends StatelessWidget {
                       },
                       cursorColor: kPrimaryBlue,
                       decoration: InputDecoration(
-                          hintText: 'Please enter your name...',
+                          hintText: 'Please enter your username...',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(defaultRadius),
                           ),
@@ -116,9 +117,62 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Password'),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      validator: (String? value) {
+                        if (value != null && value.isEmpty) {
+                          return 'Please enter your username';
+                        }
+                        return null;
+                      },
+                      controller: nameController,
+                      onChanged: (String value) {
+                        username = value;
+                      },
+                      cursorColor: kPrimaryBlue,
+                      decoration: InputDecoration(
+                          hintText: 'You can random this, no logic yet...',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(defaultRadius),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(focusedRadius),
+                            borderSide: BorderSide(color: kCtaOrange),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 30, top: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forget Password?',
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          color: kPurple,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 8),
               const SizedBox(
-                height: 80,
+                height: 30,
               ),
               Container(
                 width: 330,
@@ -135,6 +189,27 @@ class LoginScreen extends StatelessWidget {
                     },
                     child: const Text('Login'),
                   ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          const TextSpan(text: "Don't have an account? "),
+                          TextSpan(
+                            text: "Sign Up",
+                            style: TextStyle(
+                                color: kPurple, fontWeight: FontWeight.w500),
+                          )
+                        ],
+                        style: TextStyle(color: kGreyColor),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(

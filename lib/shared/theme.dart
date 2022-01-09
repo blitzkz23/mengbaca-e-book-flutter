@@ -4,6 +4,7 @@ Color kPrimaryBlue = const Color(0xFF1F1449);
 Color kCtaOrange = const Color(0xFFFF9974);
 Color kWhiteColor = const Color(0xFFFAFAFA);
 Color kGreyColor = const Color(0xFFC4C4C4);
+Color kPurple = const Color(0xFF6E5DE7);
 
 double defaultMargin = 30.0;
 double focusedRadius = 15.0;
